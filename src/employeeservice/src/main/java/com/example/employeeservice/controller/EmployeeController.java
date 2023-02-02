@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import static net.logstash.logback.argument.StructuredArguments.keyValue;
 
 @RestController
 public class EmployeeController {
@@ -29,25 +30,25 @@ public class EmployeeController {
 
     @GetMapping("/{id}")
     public Employee findById(@PathVariable("id") String id) {
-        LOGGER.info("Employee find: id={}", id);
+        LOGGER.info("Employee find: {}", keyValue("id", id));
         return repository.findById(id).get();
     }
 
     @GetMapping("/")
     public Iterable<Employee> findAll() {
-        LOGGER.info("Employee find");
+        LOGGER.info("Employee find all");
         return repository.findAll();
     }
 
     @GetMapping("/department/{departmentId}")
     public List<Employee> findByDepartment(@PathVariable("departmentId") String departmentId) {
-        LOGGER.info("Employee find: departmentId={}", departmentId);
+        LOGGER.info("Employee findByDepartment: {}", keyValue("departmentId", departmentId));
         return repository.findByDepartmentId(departmentId);
     }
 
     @GetMapping("/organization/{organizationId}")
     public List<Employee> findByOrganization(@PathVariable("organizationId") String organizationId) {
-        LOGGER.info("Employee find: organizationId={}", organizationId);
+        LOGGER.info("Employee findByOrganization: {}", keyValue("organizationId", organizationId));
         return repository.findByOrganizationId(organizationId);
     }
 
