@@ -16,5 +16,7 @@ FROM eclipse-temurin:18-jre-alpine
 WORKDIR /app
 COPY --from=builder /app .
 
+COPY agent/opentelemetry-javaagent.jar .
+
 EXPOSE 9555
 ENTRYPOINT ["java", "-jar", "./build/libs/departmentservice-1.0.jar"]
