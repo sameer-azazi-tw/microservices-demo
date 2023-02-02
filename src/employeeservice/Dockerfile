@@ -19,4 +19,4 @@ COPY --from=builder /app .
 COPY agent/opentelemetry-javaagent.jar .
 
 EXPOSE 9555
-ENTRYPOINT ["java", "-jar", "./build/libs/employeeservice-1.0.jar"]
+ENTRYPOINT ["java", "-javaagent:./agent/opentelemetry-javaagent.jar", "-jar", "./build/libs/employeeservice-1.0.jar"]
