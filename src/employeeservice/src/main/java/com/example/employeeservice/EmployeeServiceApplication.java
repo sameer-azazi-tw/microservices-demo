@@ -3,6 +3,7 @@ package com.example.employeeservice;
 import com.example.employeeservice.model.Employee;
 import com.example.employeeservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @SpringBootApplication
 @EnableMongoRepositories
+@EnableScheduling
 public class EmployeeServiceApplication implements CommandLineRunner {
 	@Autowired
 	EmployeeRepository employeeRepository;
